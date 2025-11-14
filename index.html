@@ -1,52 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Website</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kul Bhushan – Security &amp; Compliance Consulting</title>
+  <meta name="description" content="Kul Bhushan, MBA, CISSP – Fractional security & compliance consultant specializing in SOC 2, HIPAA/HITECH, NIST, incident response, and DR/BC for US-based healthcare, SaaS, and fintech companies." />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --accent: #2f4f90;
+      --accent-soft: #e2e8fb;
+      --text-main: #1f2933;
+      --text-muted: #6b7480;
+      --radius: 12px;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    header {
+      text-align: center;
+      padding: 32px 16px 16px;
+    }
+
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px auto;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      background: #d8dce8;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    header .subtitle {
+      margin-top: 8px;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+    }
+
+    .tagline {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .chip-row {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .chip {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      background: #eef2ff;
+      color: #273266;
+      white-space: nowrap;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    ul {
+      padding-left: 18px;
+      margin: 8px 0 0;
+    }
+
+    ul li {
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .industries {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .industry {
+      flex: 1 1 140px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #f8f9ff;
+      font-size: 0.9rem;
+    }
+
+    .industry strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .engagement-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .engagement {
+      flex: 1 1 180px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #f8fafc;
+      font-size: 0.9rem;
+    }
+
+    .engagement strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .contact-card {
+      text-align: center;
+    }
+
+    .contact-card p {
+      margin: 4px 0;
+    }
+
+    .button-row {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+    }
+
+    .btn.outline {
+      color: var(--accent);
+      background: transparent;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 16px 12px 32px;
+      }
+
+      header {
+        padding-top: 24px;
+      }
+
+      header h1 {
+        font-size: 1.7rem;
+      }
+
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 18px 14px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="page">
     <header>
-        <div class="container">
-            <h1>Kul Bhushan</h1>
-            <nav>
-                <ul>
-                    <li><a href="#about">About Me</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>
-                Visionary security and technology leader with over 20 years of experience in cybersecurity, IT infrastructure,
-                and compliance. Proven expertise in leading diverse teams to implement cutting-edge enterprise solutions and
-                driving innovation across startups and global organizations. Demonstrated success in developing AI-driven
-                security architectures, achieving compliance with industry standards, and fostering cultures of collaboration
-                and high performance.
-                <br>
-                <br>
-                Skilled in aligning security strategies with business goals, leveraging automation, and managing security for
-                complex cloud environments. Adept at engaging senior leadership, building cross-functional partnerships, and
-                influencing board-level decisions. Recognized for driving operational excellence and delivering measurable
-                improvements in risk mitigation, cost savings, and system resilience.   
-            </p>
-        </div>
-    </section>
+      <!-- Replace "your-photo.jpg" with your actual image path or URL -->
+      <div class="profile-photo">
+        <img src="images/kul.jpeg" alt="Kul Bhushan headshot" />
+      </div>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <p>If you'd like to get in touch, feel free to email me at <a href="mailto:info@kulbhushan.com">info@kulbhushan.com</a>.</p>
+      <h1>Kul Bhushan, MBA, CISSP</h1>
+      <p class="subtitle">Fractional Security &amp; Compliance Consultant</p>
+      <div class="tagline">
+        SOC 2 • HIPAA / HITECH • NIST • IR • DR/BC for US Healthcare, SaaS &amp; Fintech
+      </div>
+      <div class="chip-row">
+        <span class="chip">SOC 2 Readiness</span>
+        <span class="chip">HIPAA Programs</span>
+        <span class="chip">NIST CSF / 800-53</span>
+        <span class="chip">Incident Response &amp; Tabletop</span>
+        <span class="chip">Disaster Recovery &amp; Business Continuity</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>About</h2>
+        <p>
+          I’m a security founder and consultant focused on helping fast-growing
+          <strong>healthcare, SaaS, and fintech</strong> companies in the U.S. build
+          practical, audit-ready security and compliance programs.
+        </p>
+        <p class="muted">
+          With an MBA and CISSP, I bridge the gap between technical security work and
+          executive expectations, aligning SOC 2, HIPAA / HITECH, and NIST frameworks
+          with real business goals, customer contracts, and U.S. regulatory pressure.
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="two-column">
+          <div>
+            <h2>Core Services</h2>
+
+            <div>
+              <div class="section-label">Service Area</div>
+              <strong>SOC 2 Readiness &amp; Audit Support</strong>
+              <ul>
+                <li>Gap assessment and remediation roadmap</li>
+                <li>Control design, policies &amp; procedures</li>
+                <li>Evidence collection and audit preparation</li>
+                <li>Continuous readiness and customer questionnaire support</li>
+              </ul>
+            </div>
+
+            <div style="margin-top: 14px;">
+              <div class="section-label">Service Area</div>
+              <strong>HIPAA Compliance for Healthcare &amp; Healthtech</strong>
+              <ul>
+                <li>HIPAA Security &amp; Privacy Rule gap analysis</li>
+                <li>Risk assessments and PHI protection</li>
+                <li>Policies, procedures, and training</li>
+                <li>Vendor and BA risk management</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div style="margin-top: 4px;">
+              <div class="section-label">Service Area</div>
+              <strong>NIST Framework Alignment</strong>
+              <ul>
+                <li>NIST CSF / 800-53 assessments</li>
+                <li>Control mapping and maturity roadmaps</li>
+                <li>Implementation guidance and coaching</li>
+              </ul>
+            </div>
+
+            <div style="margin-top: 14px;">
+              <div class="section-label">Service Area</div>
+              <strong>Incident Response &amp; Tabletop Exercises</strong>
+              <ul>
+                <li>Incident Response plans and playbooks</li>
+                <li>Roles, responsibilities &amp; escalation paths</li>
+                <li>Scenario-based tabletop design and facilitation</li>
+                <li>After-action reports and improvement plans</li>
+              </ul>
+            </div>
+
+            <div style="margin-top: 14px;">
+              <div class="section-label">Service Area</div>
+              <strong>Disaster Recovery &amp; Business Continuity</strong>
+              <ul>
+                <li>DR/BC strategy and documentation</li>
+                <li>RTO/RPO definitions and validation</li>
+                <li>Backup and restoration planning</li>
+                <li>Continuity testing and refinement</li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </section>
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 kulbhushan.com All rights reserved.</p>
+      </section>
+
+      <section class="card">
+        <h2>Who I Work With</h2>
+        <div class="industries">
+          <div class="industry">
+            <strong>Healthcare &amp; Healthtech (U.S.)</strong>
+            HIPAA / HITECH programs, PHI security, NIST alignment, vendor and BA risk.
+          </div>
+          <div class="industry">
+            <strong>SaaS (B2B / Enterprise)</strong>
+            SOC 2 readiness, security program build-out, and customer security reviews.
+          </div>
+          <div class="industry">
+            <strong>Fintech</strong>
+            SOC 2, NIST alignment, IR/DR readiness, vendor risk, and support for U.S. regulatory expectations.
+          </div>
         </div>
+      </section>
+
+      <section class="card">
+        <h2>Engagement Models</h2>
+        <div class="engagement-list">
+          <div class="engagement">
+            <strong>Fractional Security Lead</strong>
+            10–40 hours per month of ongoing guidance and execution for teams
+            needing senior security &amp; compliance leadership.
+          </div>
+          <div class="engagement">
+            <strong>Project-Based</strong>
+            Focused engagements such as SOC 2 readiness, HIPAA programs, IR
+            build-out, tabletop exercises, or DR/BC planning.
+          </div>
+          <div class="engagement">
+            <strong>Advisory / On-Demand</strong>
+            As-needed support for founders, CTOs, and security leaders on
+            strategy, roadmap, and audits.
+          </div>
+        </div>
+      </section>
+
+      <section class="card contact-card">
+        <h2>Let’s Talk</h2>
+        <p>
+          If you’re preparing for SOC 2 or HIPAA, scaling into enterprise
+          markets, or strengthening your security posture, I’d be happy to help.
+        </p>
+        <p><strong>Email:</strong> <a href="mailto:kul@kulbhushan.com">kul@kulbhushan.com</a></p>
+        <p><strong>Website:</strong> <a href="https://kulbhushan.com" target="_blank" rel="noopener noreferrer">kulbhushan.com</a></p>
+        <!-- Optional: replace with Calendly or booking link -->
+        <!-- <p><strong>Book a call:</strong> <a href="https://calendly.com/your-link" target="_blank" rel="noopener noreferrer">Schedule 20-minute intro</a></p> -->
+
+        <div class="button-row">
+          <a class="btn" href="mailto:kul@kulbhushan.com?subject=Security%20%26%20Compliance%20Consulting">
+            Contact Me
+          </a>
+          <a class="btn outline" href="https://www.linkedin.com/in/kulbhushan" target="_blank" rel="noopener noreferrer">
+            View LinkedIn
+          </a>
+        </div>
+      </section>
+    </main>
+
+<footer class="wrap footer">
+      <p>© <span id="year"></span> <span class="nowrap">Kul Bhushan</span>. All rights reserved. Contact us at <a href="mailto:kul@kulbhushan.com">kul@kulbhushan.com</a>.</p>
     </footer>
+
+    <script>
+      // Update year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Improve keyboard focus visibility for hash navigation on load with #hash
+      (function(){
+        const id = location.hash && location.hash.slice(1);
+        if(!id) return;
+        const el = document.getElementById(id);
+        if(el){
+          el.setAttribute('tabindex','-1');
+          el.focus({preventScroll:true});
+          setTimeout(()=>el.removeAttribute('tabindex'),250);
+        }
+      })();
+    </script>
+
+  </div>
 </body>
 </html>
